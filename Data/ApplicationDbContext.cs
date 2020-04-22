@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Knowledge.Data.Entities.English;
 
 namespace Knowledge.Data
 {
@@ -17,5 +18,19 @@ namespace Knowledge.Data
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
+
+        public DbSet<EnglishDictionary> EnglishDictionary { get; set; }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<EnglishDictionary>()
+        //        .HasOne(b => b.EnglishDictionaryDetails)
+        //        .WithOne(i => i.EnglishDictionary)
+        //        .HasForeignKey<EnglishDictionaryDetails>(b => b.EnglishDictionaryId);
+
+        //    //modelBuilder.Entity<EnglishDictionaryDetails>()
+        //    //    .HasNoKey()
+        //    //    .Ignore(p => p.Id);
+        //}
     }
 }

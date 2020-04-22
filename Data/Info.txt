@@ -1,0 +1,13 @@
+//Command prompt:
+-> dotnet ef migrations add migrationName
+-> dotnet ef database update
+
+
+
+-> dotnet ef database update <previous-migration-name>
+PM> Update-Database -TargetMigration:"CategoryIdIsLong"
+
+
+
+//SQL 
+-> TRUNCATE TABLE EnglishDictionaries
