@@ -1,16 +1,18 @@
-<h1>Card Flip with Text</h1>
-<h3>Hover over the image below:</h3>
-
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <img src="\assets\img_avatar.png"  width=300 height=300 />
+<h1>Card Flip with english words</h1>
+    <div class="flip-card" *ngFor="let w of words">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p>{{w.polishWord}}</p>
+          <p>{{w.polishSentence}}</p>
+        </div>
+        <div class="flip-card-back">
+          <h1>{{w.englishWord}}</h1>
+          <p>{{w.englishSentence}}</p>
+          <p>{{w.polishSentence}}</p>
+          <p>{{w.englishSentence1}}</p>
+          <p>{{w.polishSentence1}}</p>
+          <p>{{w.englishSentence2}}</p>
+          <p>{{w.polishSentence2}}</p>
+        </div>
     </div>
-    <div class="flip-card-back">
-      <h1>John Doe</h1>
-      <p>Architect & Engineer</p>
-      <p>We love that guy</p>
-    </div>
-  </div>
 </div>
-

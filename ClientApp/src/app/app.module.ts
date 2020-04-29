@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { FlipCardComponent } from './flip-card/flip-card.component';
+import { DataService } from './shared/dataService';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { FlipCardComponent } from './flip-card/flip-card.component';
     ])
   ],
   providers: [
+    DataService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    
   ],
   bootstrap: [AppComponent]
 })

@@ -9,15 +9,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Knowledge.Controllers
 {
-    [Route("api/[Controller]")]
+    //[Route("api/[Controller]")]
     public class EnglishController : Controller
     {
-        private readonly ILogger logger;
+        //private readonly ILogger logger;
         private readonly ApplicationDbContext context;
 
-        public EnglishController(ILogger logger, ApplicationDbContext context)
+        public EnglishController(/*ILogger logger,*/ ApplicationDbContext context)
         {
-            this.logger = logger;
+            //this.logger = logger;
             this.context = context;
         }
         //public IActionResult Index()
@@ -30,12 +30,18 @@ namespace Knowledge.Controllers
         {
             try
             {
-                var result = context.EnglishDictionary.ToList();
+                var result = context.EnglishDictionary
+                    //.Select(e=>new {
+                    //    englishWord = e.englishWord,
+                    //    polishWord = e.polishWord
+                    //})                    
+                    .ToList();
+                
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                logger.LogError($"Failed to get english words: {ex}");
+                //logger.LogError($"Failed to get english words: {ex}");
                 return BadRequest($"Failed to get english words");
             }
 
