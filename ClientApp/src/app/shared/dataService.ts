@@ -1,29 +1,26 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 
 @Injectable()
 export class DataService
   {
     constructor(private http: HttpClient) {
-
     }
 
   public words:any = [];
 
-  loadWords() {
-    this.http.get("english/get")
-      .subscribe( response => this.words = response);
-    return true;
-
-
-    //this.http.get("english/get")
-    //  .subscribe(
-    //    map((data: any[]) => {
-    //      this.words = data;
-    //      return true;
-    //    }));
+  loadWords(): Observable<boolean> {
+    return this.http.get("english/get")
+      .pipe(
+        map((data: any[]) => {
+          this.words = data;
+          return true;
+        })
+      )
+    
   }
 
   //loadWords() {

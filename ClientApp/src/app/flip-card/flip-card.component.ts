@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../shared/dataService';
-import { EnglishDictionary } from '../shared/englishDictionary';
+//import { EnglishDictionary } from '../shared/englishDictionary';
 
 @Component({
   selector: 'app-flip-card-component',
@@ -11,18 +11,15 @@ export class FlipCardComponent implements OnInit {
   constructor(private data: DataService) {
   }
 
-  public words: EnglishDictionary[] = [];
+  //public words: EnglishDictionary[] = [];
+  public words = [];
 
   ngOnInit(): void {
-    this.data.loadWords();
-    this.words = this.data.words;
+    this.data.loadWords()
+      .subscribe((success) => {
+        if (success) {
+          this.words = this.data.words;
+        }
+      });
+    }}
 
-    //this.data.loadWords()
-    //  .subscribe(success => {
-    //    if (success) {
-    //      this.words = this.data.words;
-    //    }
-    //  });
-    //}}
-  }
-}
