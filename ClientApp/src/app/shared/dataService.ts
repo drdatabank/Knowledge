@@ -1,7 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { EnglishDictionary } from "./englishDictionary";
+import { EnglishDictionaryDetails } from "./englishDictionaryDetails";
 
 
 @Injectable()
@@ -10,7 +12,8 @@ export class DataService
     constructor(private http: HttpClient) {
     }
 
-  public words:any = [];
+  public words: EnglishDictionary[] = [];
+  public wordDetail: EnglishDictionaryDetails = new EnglishDictionaryDetails();
 
   loadWords(): Observable<boolean> {
     return this.http.get("english/get")
@@ -19,27 +22,21 @@ export class DataService
           this.words = data;
           return true;
         })
-      )
-    
+      )    
   }
 
-  //loadWords() {
-  //  this.words = [{
-  //    englishWord: "word1",
-  //    polishWord: "słowo1"
-  //  },
-  //  {
-  //    englishWord: "word2",
-  //    polishWord: "słowo2"
-  //  },
-  //  {
-  //    englishWord: "word3",
-  //    polishWord: "słowo3"
-  //  },
-  //  ];
 
-  //  return true;
-  //}
-
+  loadWordDetail(id: number) {
+    var url = "english/GetDetails/";// + id;
+    const params = new HttpParams()
+      .set('id', id.toString());
+    let result = this.http.get<EnglishDictionaryDetails>(url, { params });
+    result.subscribe((details: EnglishDictionaryDetails) => {
+      this.wordDetail.id = details.id;
+      this.wordDetail.correctAnswersCount = details.correctAnswersCount;
+      this.wordDetail.wrongAnswersCount = details.wrongAnswersCount;
+      this.wordDetail.note = details.note;
+    });      
   }
+}
 

@@ -1,18 +1,28 @@
 <h1>Card Flip with english words</h1>
-    <div class="flip-card" *ngFor="let w of words">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <p>{{w.polishWord}}</p>
-          <p>{{w.polishSentence}}</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class=" overflow-hidden">
+      <div class="flip-card" *ngFor="let w of words" (click)="flipCardClick(w.id)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <p>{{w.polishWord}}</p>
+            <p>{{w.polishSentence}}</p>
+          </div>
+          <div class="flip-card-back">
+            <h1>{{w.englishWord}}</h1>
+            <p>{{w.englishSentence}}</p>
+            <p>{{w.polishSentence}}</p>
+            <p>{{w.englishSentence1}}</p>
+            <p>{{w.polishSentence1}}</p>
+            <p>{{w.englishSentence2}}</p>
+            <p>{{w.polishSentence2}}</p>
+          </div>
         </div>
-        <div class="flip-card-back">
-          <h1>{{w.englishWord}}</h1>
-          <p>{{w.englishSentence}}</p>
-          <p>{{w.polishSentence}}</p>
-          <p>{{w.englishSentence1}}</p>
-          <p>{{w.polishSentence1}}</p>
-          <p>{{w.englishSentence2}}</p>
-          <p>{{w.polishSentence2}}</p>
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-md-2">
+    <cart-detils style="display:inline-block"></cart-detils>
+  </div>
 </div>
+    

@@ -46,5 +46,32 @@ namespace Knowledge.Controllers
             }
 
         }
+
+        [HttpGet]
+        public JsonResult GetDetails(int id)
+        {
+            try
+            {
+                //var result = context.EnglishDictionary
+                //    .Select(e=>e.EnglishDictionaryDetails)               
+                //    .ToList();
+
+                //var result = new List<EnglishDictionaryDetails>();
+                var details = new EnglishDictionaryDetails();
+                details.Id = id;
+                details.CorrectWrittenCount = 1;
+                details.CorrectAnswersCount = 4;
+                details.WrongAnswersCount = 12;
+                //result.Add(details);
+
+                return Json(details);//Ok(result);
+            }
+            finally { }
+            //catch (Exception ex)
+            //{
+            //    //logger.LogError($"Failed to get english words: {ex}");
+            //    return BadRequest($"Failed to get english words");
+            //}
+        }
     }
 }
